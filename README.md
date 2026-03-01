@@ -1,4 +1,4 @@
-# Mohammad Huzaifa Dar — Portfolio
+# Mohammad Huzaif — Portfolio
 
 A premium, full-stack MERN portfolio website showcasing projects, skills, and experience.
 
