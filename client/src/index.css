@@ -452,18 +452,28 @@ select {
 .hero-grid {
   display: grid;
   grid-template-columns: 3fr 2fr;
-  gap: 48px;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "header image"
+    "body   image";
+  gap: 24px 48px;
   align-items: center;
   position: relative;
   z-index: 1;
 }
 
-.hero-content {
-  position: relative;
-  z-index: 1;
+.hero-header {
+  grid-area: header;
+  align-self: end;
+}
+
+.hero-body {
+  grid-area: body;
+  align-self: start;
 }
 
 .hero-image {
+  grid-area: image;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -471,8 +481,8 @@ select {
 
 .hero-image-wrapper {
   position: relative;
-  width: 300px;
-  height: 300px;
+  width: 370px;
+  height: 370px;
   border-radius: 50%;
 }
 
@@ -1223,7 +1233,7 @@ select {
 @media (max-width: 1024px) {
   .hero-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 40px;
+    gap: 20px 32px;
   }
 
   .hero-image-wrapper {
@@ -1272,17 +1282,22 @@ select {
 
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 32px;
+    grid-template-areas:
+      "header"
+      "image"
+      "body";
+    gap: 24px;
     text-align: center;
   }
 
   .hero-image {
-    order: -1;
+    margin: 0 auto;
   }
 
   .hero-image-wrapper {
-    width: 220px;
-    height: 220px;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
   }
 
   .hero-label {
@@ -1297,6 +1312,7 @@ select {
   .hero-buttons {
     justify-content: center;
     flex-wrap: wrap;
+    gap: 12px;
   }
 
   .hero-stats {
@@ -1415,6 +1431,7 @@ select {
 
   .hero-buttons {
     flex-direction: column;
+    gap: 10px;
   }
 
   .btn {
@@ -1422,13 +1439,20 @@ select {
   }
 
   .hero-stats {
-    flex-direction: column;
-    gap: 16px;
+    gap: 20px;
+  }
+
+  .hero-stat-value {
+    font-size: 1.5rem;
+  }
+
+  .hero-stat-label {
+    font-size: 0.75rem;
   }
 
   .hero-image-wrapper {
-    width: 180px;
-    height: 180px;
+    width: 160px;
+    height: 160px;
   }
 
   .hero h1 {
@@ -1436,7 +1460,7 @@ select {
   }
 
   .hero-description {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 
   .section-title {

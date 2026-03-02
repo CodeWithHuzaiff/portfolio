@@ -11,7 +11,7 @@ const Hero = () => {
             <div className="container">
                 <div className="hero-grid">
                     <motion.div
-                        className="hero-content"
+                        className="hero-header"
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -30,24 +30,33 @@ const Hero = () => {
                             Hi, I'm{' '}
                             <span className="gradient-text">Mohammad Huzaif</span>
                         </h1>
+                    </motion.div>
 
-                        <motion.p
-                            className="hero-description"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.5, duration: 0.6 }}
-                        >
+                    <motion.div
+                        className="hero-image"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.4, duration: 0.8, ease: 'easeOut' }}
+                    >
+                        <div className="hero-image-wrapper">
+                            <img src="/profile.jpg" alt="Mohammad Huzaif" />
+                            <div className="hero-image-glow" />
+                        </div>
+                    </motion.div>
+
+                    <motion.div
+                        className="hero-body"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.5, duration: 0.7, ease: 'easeOut' }}
+                    >
+                        <p className="hero-description">
                             A passionate Full-Stack MERN Developer building scalable, modern web
                             applications. Currently pursuing Computer Science Engineering at
                             Chandigarh University, Mohali.
-                        </motion.p>
+                        </p>
 
-                        <motion.div
-                            className="hero-buttons"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.7, duration: 0.5 }}
-                        >
+                        <div className="hero-buttons">
                             <button className="btn btn-primary" onClick={() => scrollTo('projects')}>
                                 View Projects <FiArrowRight />
                             </button>
@@ -62,14 +71,9 @@ const Hero = () => {
                             <button className="btn btn-secondary" onClick={() => scrollTo('contact')}>
                                 <FiMail /> Contact Me
                             </button>
-                        </motion.div>
+                        </div>
 
-                        <motion.div
-                            className="hero-stats"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 1, duration: 0.5 }}
-                        >
+                        <div className="hero-stats">
                             <div className="hero-stat">
                                 <div className="hero-stat-value">5+</div>
                                 <div className="hero-stat-label">Projects Built</div>
@@ -82,18 +86,6 @@ const Hero = () => {
                                 <div className="hero-stat-value">MERN</div>
                                 <div className="hero-stat-label">Stack Specialist</div>
                             </div>
-                        </motion.div>
-                    </motion.div>
-
-                    <motion.div
-                        className="hero-image"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.4, duration: 0.8, ease: 'easeOut' }}
-                    >
-                        <div className="hero-image-wrapper">
-                            <img src="/profile.jpg" alt="Mohammad Huzaifa Dar" />
-                            <div className="hero-image-glow" />
                         </div>
                     </motion.div>
                 </div>
