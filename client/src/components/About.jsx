@@ -9,10 +9,10 @@ const strengths = [
 ];
 
 const fadeInUp = {
-    initial: { opacity: 0, y: 30 },
+    initial: { opacity: 0, y: 40 },
     whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: '-50px' },
-    transition: { duration: 0.6 },
+    viewport: { once: true, margin: '-80px' },
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
 };
 
 const About = () => {
@@ -34,10 +34,10 @@ const About = () => {
                 <div className="about-grid">
                     <motion.div
                         className="about-text"
-                        initial={{ opacity: 0, x: -30 }}
+                        initial={{ opacity: 0, x: -40 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
+                        transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
                     >
                         <p>
                             I'm Mohammad Huzaifa Dar, a Computer Science Engineering student at
@@ -55,27 +55,35 @@ const About = () => {
                             projects and grow as a professional software developer.
                         </p>
 
-                        <div className="about-edu">
+                        <motion.div
+                            className="about-edu"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.4, duration: 0.5 }}
+                            whileHover={{ scale: 1.02 }}
+                        >
                             <h4>🎓 B.E. in Computer Science Engineering</h4>
                             <p>Chandigarh University, Mohali</p>
-                        </div>
+                        </motion.div>
                     </motion.div>
 
                     <motion.div
                         className="strengths-grid"
-                        initial={{ opacity: 0, x: 30 }}
+                        initial={{ opacity: 0, x: 40 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.3 }}
+                        transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
                     >
                         {strengths.map((s, i) => (
                             <motion.div
                                 key={i}
                                 className="strength-card"
-                                initial={{ opacity: 0, scale: 0.9 }}
+                                initial={{ opacity: 0, scale: 0.85 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
-                                transition={{ delay: 0.1 * i, duration: 0.4 }}
+                                transition={{ delay: 0.15 * i, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                                whileHover={{ y: -4, transition: { duration: 0.2 } }}
                             >
                                 <div className="strength-icon">{s.icon}</div>
                                 <h4>{s.title}</h4>

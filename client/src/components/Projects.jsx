@@ -37,10 +37,10 @@ const Projects = () => {
         <section className="section" id="projects">
             <div className="container">
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
+                    transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                 >
                     <span className="section-label">
                         <FiFolder /> Projects
@@ -55,19 +55,21 @@ const Projects = () => {
 
                 <motion.div
                     className="projects-filter"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.2, duration: 0.5 }}
                 >
                     {allTechStacks.map((tech) => (
-                        <button
+                        <motion.button
                             key={tech}
                             className={`filter-btn ${activeFilter === tech ? 'active' : ''}`}
                             onClick={() => setActiveFilter(tech)}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
                         >
                             {tech}
-                        </button>
+                        </motion.button>
                     ))}
                 </motion.div>
 
@@ -83,10 +85,10 @@ const Projects = () => {
                                     key={project._id}
                                     className="glass-card project-card"
                                     layout
-                                    initial={{ opacity: 0, scale: 0.9 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0.9 }}
-                                    transition={{ duration: 0.4, delay: i * 0.05 }}
+                                    initial={{ opacity: 0, scale: 0.85, y: 30 }}
+                                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                                    exit={{ opacity: 0, scale: 0.85, y: -20 }}
+                                    transition={{ duration: 0.5, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
                                 >
                                     <div className="project-image">
                                         {project.imageURL ? (
@@ -98,24 +100,28 @@ const Projects = () => {
                                         )}
                                         <div className="project-overlay">
                                             {project.githubLink && (
-                                                <a
+                                                <motion.a
                                                     href={project.githubLink}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
                                                     className="project-overlay-btn secondary"
+                                                    whileHover={{ scale: 1.1 }}
+                                                    whileTap={{ scale: 0.95 }}
                                                 >
                                                     <FiGithub /> Code
-                                                </a>
+                                                </motion.a>
                                             )}
                                             {project.liveLink && (
-                                                <a
+                                                <motion.a
                                                     href={project.liveLink}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
                                                     className="project-overlay-btn"
+                                                    whileHover={{ scale: 1.1 }}
+                                                    whileTap={{ scale: 0.95 }}
                                                 >
                                                     <FiExternalLink /> Live
-                                                </a>
+                                                </motion.a>
                                             )}
                                         </div>
                                     </div>

@@ -1,4 +1,11 @@
+import { motion } from 'framer-motion';
 import { FiGithub, FiLinkedin, FiMail, FiHeart } from 'react-icons/fi';
+
+const socialLinks = [
+    { href: 'https://github.com/codewithhuzaiff', icon: <FiGithub />, label: 'GitHub' },
+    { href: 'https://linkedin.com/in/mohammad-huzaif', icon: <FiLinkedin />, label: 'LinkedIn' },
+    { href: 'mailto:mohammadhuzaiff@gmail.com', icon: <FiMail />, label: 'Email' },
+];
 
 const Footer = () => {
     return (
@@ -13,31 +20,23 @@ const Footer = () => {
                 </div>
 
                 <div className="footer-links">
-                    <a
-                        href="https://github.com/codewithhuzaiff"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="footer-link"
-                        aria-label="GitHub"
-                    >
-                        <FiGithub />
-                    </a>
-                    <a
-                        href="https://linkedin.com/in/mohammad-huzaif"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="footer-link"
-                        aria-label="LinkedIn"
-                    >
-                        <FiLinkedin />
-                    </a>
-                    <a
-                        href="mailto:mohammadhuzaiff@gmail.com"
-                        className="footer-link"
-                        aria-label="Email"
-                    >
-                        <FiMail />
-                    </a>
+                    {socialLinks.map((link, i) => (
+                        <motion.a
+                            key={link.label}
+                            href={link.href}
+                            target={link.href.startsWith('mailto') ? undefined : '_blank'}
+                            rel={link.href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
+                            className="footer-link"
+                            aria-label={link.label}
+                            whileHover={{ y: -3, scale: 1.1 }}
+                            whileTap={{ scale: 0.95 }}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.1 * i, duration: 0.4 }}
+                        >
+                            {link.icon}
+                        </motion.a>
+                    ))}
                 </div>
             </div>
         </footer>

@@ -46,10 +46,10 @@ const Contact = () => {
         <section className="section" id="contact">
             <div className="container">
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
+                    transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                 >
                     <span className="section-label">
                         <FiMail /> Contact
@@ -65,10 +65,10 @@ const Contact = () => {
                 <div className="contact-grid">
                     <motion.div
                         className="contact-info"
-                        initial={{ opacity: 0, x: -30 }}
+                        initial={{ opacity: 0, x: -40 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        transition={{ delay: 0.2, duration: 0.6 }}
+                        transition={{ delay: 0.2, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                     >
                         <h3>Get in Touch</h3>
                         <p>
@@ -76,7 +76,11 @@ const Contact = () => {
                             opportunities to be part of your vision.
                         </p>
 
-                        <div className="contact-item">
+                        <motion.div
+                            className="contact-item"
+                            whileHover={{ x: 4 }}
+                            transition={{ duration: 0.2 }}
+                        >
                             <div className="contact-item-icon"><FiMail /></div>
                             <div className="contact-item-text">
                                 <h4>Email</h4>
@@ -89,9 +93,13 @@ const Contact = () => {
                                     </a>
                                 </p>
                             </div>
-                        </div>
+                        </motion.div>
 
-                        <div className="contact-item">
+                        <motion.div
+                            className="contact-item"
+                            whileHover={{ x: 4 }}
+                            transition={{ duration: 0.2 }}
+                        >
                             <div className="contact-item-icon"><FiMapPin /></div>
                             <div className="contact-item-text">
                                 <h4>Location</h4>
@@ -106,9 +114,13 @@ const Contact = () => {
                                     </a>
                                 </p>
                             </div>
-                        </div>
+                        </motion.div>
 
-                        <div className="contact-item">
+                        <motion.div
+                            className="contact-item"
+                            whileHover={{ x: 4 }}
+                            transition={{ duration: 0.2 }}
+                        >
                             <div className="contact-item-icon"><FiGithub /></div>
                             <div className="contact-item-text">
                                 <h4>GitHub</h4>
@@ -123,9 +135,13 @@ const Contact = () => {
                                     </a>
                                 </p>
                             </div>
-                        </div>
+                        </motion.div>
 
-                        <div className="contact-item">
+                        <motion.div
+                            className="contact-item"
+                            whileHover={{ x: 4 }}
+                            transition={{ duration: 0.2 }}
+                        >
                             <div className="contact-item-icon"><FiLinkedin /></div>
                             <div className="contact-item-text">
                                 <h4>LinkedIn</h4>
@@ -140,16 +156,16 @@ const Contact = () => {
                                     </a>
                                 </p>
                             </div>
-                        </div>
+                        </motion.div>
                     </motion.div>
 
                     <motion.form
                         className="glass-card contact-form"
                         onSubmit={handleSubmit}
-                        initial={{ opacity: 0, x: 30 }}
+                        initial={{ opacity: 0, x: 40 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        transition={{ delay: 0.3, duration: 0.6 }}
+                        transition={{ delay: 0.3, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                     >
                         {/* Honeypot */}
                         <input
@@ -203,14 +219,16 @@ const Contact = () => {
                             />
                         </div>
 
-                        <button
+                        <motion.button
                             type="submit"
                             className="btn btn-primary"
                             disabled={sending}
                             style={{ width: '100%', justifyContent: 'center' }}
+                            whileHover={{ scale: 1.02, boxShadow: '0 6px 30px rgba(99, 102, 241, 0.5)' }}
+                            whileTap={{ scale: 0.98 }}
                         >
-                            {sending ? 'Sending...' : <>Send Message <FiSend /></>}
-                        </button>
+                            {sending ? 'Sending...' : <><FiSend /> Send Message</>}
+                        </motion.button>
                     </motion.form>
                 </div>
             </div>

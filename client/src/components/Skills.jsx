@@ -48,14 +48,21 @@ const SkillBar = ({ name, level, delay }) => {
         <div className="skill-item" ref={ref}>
             <div className="skill-header">
                 <span className="skill-name">{name}</span>
-                <span className="skill-level">{level}%</span>
+                <motion.span
+                    className="skill-level"
+                    initial={{ opacity: 0 }}
+                    animate={inView ? { opacity: 1 } : { opacity: 0 }}
+                    transition={{ delay: delay * 0.2 + 0.5, duration: 0.4 }}
+                >
+                    {level}%
+                </motion.span>
             </div>
             <div className="skill-bar">
                 <motion.div
                     className="skill-bar-fill"
                     initial={{ width: 0 }}
                     animate={inView ? { width: `${level}%` } : { width: 0 }}
-                    transition={{ duration: 1.2, delay: delay * 0.15, ease: 'easeOut' }}
+                    transition={{ duration: 1.4, delay: delay * 0.15, ease: [0.22, 1, 0.36, 1] }}
                 />
             </div>
         </div>
@@ -67,10 +74,10 @@ const Skills = () => {
         <section className="section" id="skills">
             <div className="container">
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
+                    transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                 >
                     <span className="section-label">
                         <FiCode /> Skills
@@ -88,10 +95,11 @@ const Skills = () => {
                         <motion.div
                             key={cat.title}
                             className="glass-card skill-category"
-                            initial={{ opacity: 0, y: 30 }}
+                            initial={{ opacity: 0, y: 40 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: i * 0.1, duration: 0.5 }}
+                            transition={{ delay: i * 0.12, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                            whileHover={{ y: -6, transition: { duration: 0.25 } }}
                         >
                             <div className="skill-category-icon">{cat.icon}</div>
                             <h3>{cat.title}</h3>

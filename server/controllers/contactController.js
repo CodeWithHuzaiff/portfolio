@@ -1,5 +1,6 @@
 const Contact = require('../models/Contact');
 const { validationResult } = require('express-validator');
+const sendContactNotification = require('../utils/sendEmail');
 
 // @desc    Submit contact message
 // @route   POST /api/contacts
@@ -13,6 +14,10 @@ exports.submitContact = async (req, res, next) => {
 
     const { name, email, message } = req.body;
     const contact = await Contact.create({ name, email, message });
+
+    // Send email notification (non-blocking)
+    sendContactNotification({ name, email, message });
+
     res.status(201).json({ success: true, message: 'Message sent successfully!' });
   } catch (error) {
     next(error);
