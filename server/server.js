@@ -17,9 +17,11 @@ connectDB();
 
 // Middleware
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production'
-    ? true
-    : ['http://localhost:5173', 'http://localhost:3000'],
+  origin: [
+    'http://localhost:5173',
+    'http://localhost:3000',
+    'https://mohammadhuzaif.me'
+  ],
   credentials: true,
 }));
 app.use(express.json({ limit: '10mb' }));
@@ -29,19 +31,10 @@ app.use('/api/projects', projectRoutes);
 app.use('/api/contacts', contactRoutes);
 app.use('/api/auth', authRoutes);
 
-// Serve React build in production
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'public')));
-
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-  });
-}
-
 // Error handler
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
