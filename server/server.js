@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const path = require('path');
+
 const connectDB = require('./config/db');
 const errorHandler = require('./middleware/errorHandler');
 
@@ -20,9 +20,11 @@ app.use(cors({
   origin: [
     'http://localhost:5173',
     'http://localhost:5174',
-    'https://mohammadhuzaif.me'
+    'https://mohammadhuzaif.me',
+    'https://www.mohammadhuzaif.me'
   ],
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
 }));
 app.use(express.json({ limit: '10mb' }));
