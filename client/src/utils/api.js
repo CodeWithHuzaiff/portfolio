@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: (import.meta.env.VITE_API_URL || '') + '/api',
+  baseURL: (import.meta.env.VITE_API_URL || 'https://portfolio-1-uztj.onrender.com') + '/api',
   headers: {
     'Content-Type': 'application/json',
   },
