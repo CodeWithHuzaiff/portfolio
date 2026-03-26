@@ -93,29 +93,7 @@ npm run dev
 - Frontend: http://localhost:5173
 - Backend: http://localhost:5000
 
-## 📦 Deploy to Render
 
-### MongoDB Atlas Setup
-
-1. Create a free cluster at [mongodb.com/atlas](https://mongodb.com/atlas)
-2. Create a database user
-3. Add `0.0.0.0/0` to IP whitelist
-4. Copy the connection string
-
-### Render Deployment
-
-1. Push to GitHub
-2. Create a **Web Service** on [render.com](https://render.com)
-3. Connect your repo
-4. Configure:
-   - **Build Command**: `npm run install:all && npm run build`
-   - **Start Command**: `npm start`
-5. Add environment variables:
-   - `MONGO_URI` — your Atlas connection string
-   - `JWT_SECRET` — a random secure string
-   - `NODE_ENV` — `production`
-   - `PORT` — `5000`
-6. Deploy!
 
 ## 🔐 Admin Panel
 
